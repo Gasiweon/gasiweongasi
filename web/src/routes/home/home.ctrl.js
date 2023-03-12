@@ -1,34 +1,53 @@
 "use strict";
 
-const hello = (req, res) =>  {
-    res.render("home/index");
-};
+const output = {
+    home: (req, res) =>  {
+        res.render("home/index");
+    },
+    
+    join: (req, res) =>  {
+        res.render("home/join");
+    },
+    
+    list: (req, res) =>  {
+        res.render("home/list");
+    },
+    
+    bbs: (req, res) =>  {
+        res.render("home/bbs");
+    },
+    
+    main: (req, res) =>  {
+        res.render("home/main");
+    },
+    
+    login: (req, res) => {
+        res.render("home/login");
+    },
+}
 
-const join = (req, res) =>  {
-    res.render("home/join");
-};
+const process = {
+    login: (req, res) => {
+        const id = req.body.id,
+        password = req.body.password
 
-const list = (req, res) =>  {
-    res.render("home/list");
-};
 
-const bbs = (req, res) =>  {
-    res.render("home/bbs");
-};
 
-const main = (req, res) =>  {
-    res.render("home/main");
-};
-
-const login = (req, res) =>  {
-    res.render("home/login");
-};
-
+        if (users.id.includes(id)) {
+            const idx = users.id.index0f(id);
+            if(users.password[idx] === password) {
+                return res.json({
+                seccess: true,
+            });
+        }
+    }
+    return res.json({
+        success: false,
+        msg: "로그인에 실패하셨습니다."
+    });
+}
+}
 module.exports = {
-    hello,
-    join,
-    list,
-    bbs,
-    main,
-    login
+    output,
+    process
 };
